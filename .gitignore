@@ -15,8 +15,7 @@ artifacts/
 *.log
 
 # Environment
-.env
-.env.*
+.env*
 
 # Workspace guidance
 AGENTS.md
