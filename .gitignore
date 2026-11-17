@@ -1,0 +1,24 @@
+# Dependencies
+node_modules/
+.node_modules.lock
+
+# Build output
+.output/
+.vercel/
+.tanstack/
+dist/
+
+# Local tooling and QA
+.grok/
+screenshots/
+artifacts/
+*.log
+
+# Environment
+.env
+.env.*
+
+# Workspace guidance
+AGENTS.md
+AGENTS.project.md
+.DS_Store

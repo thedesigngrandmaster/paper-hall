@@ -1,0 +1,110 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+
+  /* Paper + ink */
+  --color-paper: #f4f0e7;
+  --color-paper-deep: #ebe4d7;
+  --color-paper-soft: #fbf8f2;
+  --color-ink: #191612;
+  --color-muted: #6d655c;
+  --color-line: #e2dbcf;
+  --color-line-strong: #cfc4b3;
+  --color-card: #fffdf8;
+
+  /* Ink blue */
+  --color-navy: #1b3556;
+  --color-navy-deep: #14283f;
+  --color-navy-mid: #345173;
+  --color-navy-soft: #e8eef5;
+  --color-navy-muted: #a9b8ca;
+
+  /* One warm accent */
+  --color-rust: #ad4c25;
+  --color-rust-deep: #8d3c1b;
+  --color-rust-soft: #f8eae1;
+
+  /* Status */
+  --color-ok: #1d6b45;
+  --color-ok-soft: #e9f3ec;
+
+  --radius-card: 1.25rem;
+  --radius-inner: 0.85rem;
+
+  --shadow-card: 0 1px 2px rgb(25 22 18 / 0.04), 0 18px 40px -32px rgb(25 22 18 / 0.45);
+  --shadow-lift: 0 2px 4px rgb(25 22 18 / 0.05), 0 24px 48px -28px rgb(25 22 18 / 0.35);
+  --shadow-float: 0 32px 80px -32px rgb(25 22 18 / 0.55);
+
+  --animate-rise: rise 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@layer base {
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  html {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    min-height: 100vh;
+    min-height: 100dvh;
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+    background-image: linear-gradient(180deg, #f6f2ea 0%, #f4f0e7 45%, #f0ebe1 100%);
+    background-attachment: fixed;
+  }
+
+  ::selection {
+    background: var(--color-navy);
+    color: var(--color-card);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-rust);
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation: none !important;
+      transition: none !important;
+    }
+  }
+}
+
+@layer components {
+  /* Quiet ruled-paper motif, used once or twice at most. */
+  .paper-lines {
+    background-image: repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent 27px,
+      color-mix(in oklab, var(--color-line) 70%, transparent) 27px,
+      color-mix(in oklab, var(--color-line) 70%, transparent) 28px
+    );
+  }
+}
